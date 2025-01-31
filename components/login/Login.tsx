@@ -6,8 +6,8 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { loadSlim } from "tsparticles-slim";
+import { Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
-import type { Engine } from "tsparticles-engine";
 
 export default function Login() {
     const router = useRouter();

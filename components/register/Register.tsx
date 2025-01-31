@@ -5,8 +5,8 @@ import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { loadSlim } from "tsparticles-slim";
+import { Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
-import type { Engine } from "tsparticles-engine";
 import Link from 'next/link';
 
 export default function Register() {
