@@ -59,7 +59,7 @@ export default function SwiftProfit() {
               </p>
               <p>
                 <span className="font-semibold">Step 5 - </span>
-                Grab Your Link, Insert Into Your Marketplace Banner URL Section in "Monetize" &
+                Grab Your Link, Insert Into Your Marketplace Banner URL Section in 'Monetize' &
                 Also At The Footer Of Your Ebooks. Enjoy Automated Sales.
               </p>
             </div>
