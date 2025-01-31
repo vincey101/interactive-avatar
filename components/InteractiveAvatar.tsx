@@ -40,6 +40,7 @@ export default function InteractiveAvatar() {
   const [knowledgeBase, setKnowledgeBase] = useState<string>("");
   const [avatarId, setAvatarId] = useState<string>("");
   const [language, setLanguage] = useState<string>('en');
+  const [emotion, setEmotion] = useState<string>('Excited');
 
   const [data, setData] = useState<StartAvatarResponse>();
   const [text, setText] = useState<string>("");
@@ -55,6 +56,14 @@ export default function InteractiveAvatar() {
   const [selectedFileName, setSelectedFileName] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [processingStatus, setProcessingStatus] = useState<string>('');
+
+  const EMOTION_OPTIONS = [
+    { key: 'Excited', label: 'Excited' },
+    { key: 'Serious', label: 'Serious' },
+    { key: 'Friendly', label: 'Friendly' },
+    { key: 'Soothing', label: 'Soothing' },
+    { key: 'Broadcaster', label: 'Broadcaster' }
+  ];
 
   useEffect(() => {
     const selectedAvatarId = localStorage.getItem('selectedAvatarId');
@@ -130,7 +139,7 @@ export default function InteractiveAvatar() {
         voice: {
           // voice_id: "26b2064088674c80b1e5fc5ab1a068eb",
           rate: 1.5, // 0.5 ~ 1.5
-          emotion: VoiceEmotion.EXCITED,
+          emotion: emotion,
           // elevenlabsSettings: {
           //   stability: 1,
           //   similarity_boost: 1,
@@ -220,6 +229,9 @@ export default function InteractiveAvatar() {
 
   const handlePdfClick = () => {
     setSelectedKnowledgeType('pdf');
+    setKnowledgeBase('');
+    setSelectedFileName('');
+    setProcessingStatus('');
     if (fileInputRef.current) {
       fileInputRef.current.accept = '.pdf';
       fileInputRef.current.click();
@@ -228,6 +240,9 @@ export default function InteractiveAvatar() {
 
   const handleDocClick = () => {
     setSelectedKnowledgeType('doc');
+    setKnowledgeBase('');
+    setSelectedFileName('');
+    setProcessingStatus('');
     if (fileInputRef.current) {
       fileInputRef.current.accept = '.docx';
       fileInputRef.current.click();
@@ -421,17 +436,22 @@ export default function InteractiveAvatar() {
                     }}
                   >
                     <Button
-                      className={`flex items-center justify-center p-4 h-14 transition-all duration-300 ${selectedKnowledgeType === 'url'
+                      className={`flex items-center justify-center p-4 h-14 transition-all duration-300 ${
+                        selectedKnowledgeType === 'url'
                         ? 'bg-gradient-to-tr from-purple-600 to-pink-500 text-white shadow-lg scale-105'
                         : 'bg-gradient-to-tr from-white to-purple-50 hover:from-purple-50 hover:to-purple-100 border border-purple-100 shadow-sm hover:shadow-md hover:scale-105'
                         }`}
-                      onClick={() => setSelectedKnowledgeType('url')}
+                      onClick={() => {
+                        setSelectedKnowledgeType('url');
+                        setKnowledgeBase('');
+                        setSelectedFileName('');
+                        setProcessingStatus('');
+                      }}
                     >
                       <Link
                         size={24}
-                        className={`${selectedKnowledgeType === 'url'
-                          ? 'text-white'
-                          : 'text-purple-500'
+                        className={`${
+                          selectedKnowledgeType === 'url' ? 'text-white' : 'text-purple-500'
                           } transition-colors`}
                       />
                     </Button>
@@ -445,17 +465,22 @@ export default function InteractiveAvatar() {
                     }}
                   >
                     <Button
-                      className={`flex items-center justify-center p-4 h-14 transition-all duration-300 ${selectedKnowledgeType === 'text'
+                      className={`flex items-center justify-center p-4 h-14 transition-all duration-300 ${
+                        selectedKnowledgeType === 'text'
                         ? 'bg-gradient-to-tr from-purple-600 to-pink-500 text-white shadow-lg scale-105'
                         : 'bg-gradient-to-tr from-white to-rose-50 hover:from-rose-50 hover:to-rose-100 border border-purple-100 shadow-sm hover:shadow-md hover:scale-105'
                         }`}
-                      onClick={() => setSelectedKnowledgeType('text')}
+                      onClick={() => {
+                        setSelectedKnowledgeType('text');
+                        setKnowledgeBase('');
+                        setSelectedFileName('');
+                        setProcessingStatus('');
+                      }}
                     >
                       <FileText
                         size={24}
-                        className={`${selectedKnowledgeType === 'text'
-                          ? 'text-white'
-                          : 'text-pink-500'
+                        className={`${
+                          selectedKnowledgeType === 'text' ? 'text-white' : 'text-pink-500'
                           } transition-colors`}
                       />
                     </Button>
@@ -515,7 +540,7 @@ export default function InteractiveAvatar() {
                     <Input
                       placeholder="Enter URL"
                       value={knowledgeBase}
-                      onChange={(e) => setKnowledgeBase(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKnowledgeBase(e.target.value)}
                       startContent={<Link size={18} />}
                     />
                   )}
@@ -524,7 +549,7 @@ export default function InteractiveAvatar() {
                     <Textarea
                       placeholder="Enter or paste your text content"
                       value={knowledgeBase}
-                      onChange={(e) => setKnowledgeBase(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setKnowledgeBase(e.target.value)}
                       minRows={3}
                       maxRows={4}
                       classNames={{
@@ -593,7 +618,7 @@ export default function InteractiveAvatar() {
                   <Input
                     placeholder="Enter a custom avatar ID"
                     value={avatarId}
-                    onChange={(e) => setAvatarId(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAvatarId(e.target.value)}
                     isReadOnly
                   />
                 </div>
@@ -614,34 +639,60 @@ export default function InteractiveAvatar() {
                     </SelectItem>
                   ))}
                 </Select> */}
-                <Select
-                  placeholder="Select language"
-                  className="max-w-xs"
-                  selectedKeys={[language]}
-                  onChange={(e) => {
-                    setLanguage(e.target.value);
-                  }}
-                  classNames={{
-                    trigger: "h-6 min-h-unit-6",
-                    value: "text-xs",
-                    base: "min-h-unit-6",
-                    label: "hidden",
-                  }}
-                >
-                  {STT_LANGUAGE_LIST.map((lang) => (
-                    <SelectItem
-                      key={lang.key}
-                      startContent={
-                        <div className="w-4 h-4 rounded-full flex items-center justify-center bg-gray-100">
-                          <span className="text-xs">{lang.flag}</span>
-                        </div>
-                      }
-                      className="text-sm"
-                    >
-                      {lang.label}
-                    </SelectItem>
-                  ))}
-                </Select>
+                <div className="flex gap-2 w-full">
+                  <Select
+                    placeholder="Select language"
+                    className="max-w-[50%]"
+                    selectedKeys={[language]}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                      setLanguage(e.target.value);
+                    }}
+                    classNames={{
+                      trigger: "h-6 min-h-unit-6",
+                      value: "text-xs",
+                      base: "min-h-unit-6",
+                      label: "hidden",
+                    }}
+                  >
+                    {STT_LANGUAGE_LIST.map((lang) => (
+                      <SelectItem
+                        key={lang.key}
+                        startContent={
+                          <div className="w-4 h-4 rounded-full flex items-center justify-center bg-gray-100">
+                            <span className="text-xs">{lang.flag}</span>
+                          </div>
+                        }
+                        className="text-sm"
+                      >
+                        {lang.label}
+                      </SelectItem>
+                    ))}
+                  </Select>
+
+                  <Select
+                    placeholder="Select emotion"
+                    className="max-w-[50%]"
+                    selectedKeys={[emotion]}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                      setEmotion(e.target.value);
+                    }}
+                    classNames={{
+                      trigger: "h-6 min-h-unit-6",
+                      value: "text-xs",
+                      base: "min-h-unit-6",
+                      label: "hidden",
+                    }}
+                  >
+                    {EMOTION_OPTIONS.map((emotionOption) => (
+                      <SelectItem
+                        key={emotionOption.key}
+                        className="text-sm"
+                      >
+                        {emotionOption.label}
+                      </SelectItem>
+                    ))}
+                  </Select>
+                </div>
               </div>
               <Button
                 className="bg-gradient-to-tr from-indigo-500 to-indigo-300 w-full text-white mt-1"
