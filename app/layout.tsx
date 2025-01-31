@@ -21,11 +21,11 @@ const fontMono = FontMono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Avatar Studio",
-    template: `%s - Avatar Studio`,
+    default: "HumanAI",
+    template: `%s - HumanAI`,
   },
   icons: {
-    icon: "/heygen-logo.png",
+    icon: "/humanai-favicon.png",
   },
 };
 

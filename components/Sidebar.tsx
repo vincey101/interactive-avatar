@@ -20,6 +20,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -72,8 +73,15 @@ const Sidebar = () => {
   if (!isInitialized) {
     return (
       <div className="fixed w-64 h-screen bg-gray-900 flex flex-col">
-        <div className="flex items-center h-16 px-6 border-b border-gray-700 bg-black">
-          <h1 className="text-lg font-bold text-white">Avatar Studio</h1>
+        <div className="flex items-center h-16 px-6 border-b border-gray-700 bg-gradient-to-b from-black to-gray-900">
+          <Image
+            src="/logo1.png"
+            alt="HumanAI Logo"
+            width={140}
+            height={40}
+            className="object-contain w-auto h-8"
+            priority
+          />
         </div>
         <div className="flex-1" />
       </div>
@@ -82,17 +90,23 @@ const Sidebar = () => {
 
   return (
     <div className="fixed w-64 h-screen bg-gray-900 flex flex-col">
-      <div className="flex items-center h-16 px-6 border-b border-gray-700 bg-black">
-        <h1 className="text-lg font-bold text-white">HumanAI Studio</h1>
+      <div className="flex items-center h-16 px-6 border-b border-gray-700 bg-gradient-to-b from-black to-gray-900">
+        <Image
+          src="/logo1.png"
+          alt="HumanAI Studio Logo"
+          width={140}
+          height={40}
+          className="object-contain w-auto h-8"
+          priority
+        />
       </div>
 
       {/* Main navigation - with custom scrollbar */}
       <nav className="flex-1 overflow-y-auto p-3 space-y-1.5 custom-scrollbar">
         <Link
           href="/"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <HomeIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Dashboard
@@ -118,18 +132,16 @@ const Sidebar = () => {
             <div className="ml-4 mt-1.5 space-y-1.5">
               <Link
                 href="/projects/create-avatar"
-                className={`flex items-center px-4 py-2 text-[13px] ${
-                  isActive('/projects/create-avatar') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-                } rounded-lg transition-colors group`}
+                className={`flex items-center px-4 py-2 text-[13px] ${isActive('/projects/create-avatar') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  } rounded-lg transition-colors group`}
               >
                 <PlusIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
                 Interactive Avatar
               </Link>
               <Link
                 href="/projects/manage"
-                className={`flex items-center px-4 py-2 text-[13px] ${
-                  isActive('/projects/manage') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-                } rounded-lg transition-colors group`}
+                className={`flex items-center px-4 py-2 text-[13px] ${isActive('/projects/manage') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  } rounded-lg transition-colors group`}
               >
                 <WrenchIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
                 Manage
@@ -140,9 +152,8 @@ const Sidebar = () => {
 
         <Link
           href="/traffic"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/traffic') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/traffic') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <ChartBarIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Traffic
@@ -150,9 +161,8 @@ const Sidebar = () => {
 
         <Link
           href="/swift-profit"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/swift-profit') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/swift-profit') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <BanknotesIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Swift Profit
@@ -160,9 +170,8 @@ const Sidebar = () => {
 
         <Link
           href="/multiple-income"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/multiple-income') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/multiple-income') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <BuildingOfficeIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Multiple Income
@@ -170,9 +179,8 @@ const Sidebar = () => {
 
         <Link
           href="/agency"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/agency') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/agency') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <BuildingOfficeIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Agency
@@ -180,9 +188,8 @@ const Sidebar = () => {
 
         <Link
           href="/franchise"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/franchise') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/franchise') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <BuildingStorefrontIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Franchise
@@ -190,9 +197,8 @@ const Sidebar = () => {
 
         <Link
           href="/tutorial"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/tutorial') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/tutorial') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <PlayIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Tutorial
@@ -200,9 +206,8 @@ const Sidebar = () => {
 
         <button
           onClick={handleSupportClick}
-          className={`flex items-center w-full px-4 py-2 text-[13px] ${
-            isActive('/support') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center w-full px-4 py-2 text-[13px] ${isActive('/support') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <ChatBubbleLeftIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Support
@@ -210,9 +215,8 @@ const Sidebar = () => {
 
         <button
           onClick={handleBonusesClick}
-          className={`flex items-center w-full px-4 py-2 text-[13px] ${
-            isActive('/bonuses') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center w-full px-4 py-2 text-[13px] ${isActive('/bonuses') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <GiftIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Bonuses
@@ -220,9 +224,8 @@ const Sidebar = () => {
 
         <Link
           href="/upgrade-plan"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/upgrade-plan') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/upgrade-plan') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <ArrowUpTrayIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Upgrade Plan
@@ -230,9 +233,8 @@ const Sidebar = () => {
 
         <Link
           href="/settings"
-          className={`flex items-center px-4 py-2 text-[13px] ${
-            isActive('/settings') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center px-4 py-2 text-[13px] ${isActive('/settings') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <Cog6ToothIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Settings
@@ -243,9 +245,8 @@ const Sidebar = () => {
       <div className="p-3 border-t border-gray-700">
         <button
           onClick={handleLogout}
-          className={`flex items-center w-full px-4 py-2 text-[13px] ${
-            isActive('/login') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-          } rounded-lg transition-colors group`}
+          className={`flex items-center w-full px-4 py-2 text-[13px] ${isActive('/login') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            } rounded-lg transition-colors group`}
         >
           <ArrowRightOnRectangleIcon className="w-[18px] h-[18px] mr-2.5 group-hover:text-white" />
           Logout
