@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
 
         // Choose the appropriate endpoint based on file type
         const endpoint = type === 'pdf'
-            ? 'https://humanaiapp.com/api/get-pdf-content'
-            : 'https://humanaiapp.com/api/get-docx-content';
+            ? 'https://api.humanaiapp.com/api/get-pdf-content'
+            : 'https://api.humanaiapp.com/api/get-docx-content';
 
         // Make the request to the external API with the authorization header
         const response = await fetch(endpoint, {

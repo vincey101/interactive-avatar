@@ -549,7 +549,7 @@ export default function InteractiveAvatar() {
                     <Textarea
                       placeholder="Enter or paste your text content"
                       value={knowledgeBase}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setKnowledgeBase(e.target.value)}
+                      onValueChange={setKnowledgeBase}
                       minRows={3}
                       maxRows={4}
                       classNames={{

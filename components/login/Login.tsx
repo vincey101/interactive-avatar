@@ -27,7 +27,7 @@ export default function Login() {
         setIsLoading(true);
 
         try {
-            const response = await fetch('https://humanaiapp.com/api/login', {
+            const response = await fetch('https://api.humanaiapp.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -199,18 +199,6 @@ export default function Login() {
                         >
                             {isLoading ? 'Signing in...' : 'Sign in'}
                         </button>
-                    </div>
-
-                    <div className="text-center text-sm">
-                        <span className="text-gray-300">
-                            Don't have an account?{' '}
-                            <Link
-                                href="/register-a7x9f3e2"
-                                className="font-medium text-[#21ABCD] hover:text-[#1C96B5] transition-colors"
-                            >
-                                Register
-                            </Link>
-                        </span>
                     </div>
                 </form>
             </div>
