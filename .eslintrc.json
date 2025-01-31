@@ -7,18 +7,17 @@
   },
   "extends": [
     "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "plugins": [
-    "prettier"
+    "@typescript-eslint",
+    "prettier",
+    "unused-imports"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
+    "project": "./tsconfig.json"
   },
   "settings": {
     "react": {
@@ -26,11 +25,13 @@
     }
   },
   "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "unused-imports/no-unused-imports": "warn",
     "react/jsx-sort-props": "off",
     "react/no-unescaped-entities": "off",
     "import/order": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
     "no-console": "warn",
-    "prettier/prettier": "off"
+    "prettier/prettier": "off",
+    "@next/next/no-img-element": "warn"
   }
 }
