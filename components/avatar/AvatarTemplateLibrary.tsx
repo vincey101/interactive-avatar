@@ -151,24 +151,24 @@ const TemplateSelection = ({ onBack }: TemplateSelectionProps) => {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl p-8 max-w-6xl w-full mx-4 shadow-xl max-h-[90vh] overflow-y-auto relative">
-        {/* Close button */}
-        <button
-          onClick={onBack}
-          className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <XMarkIcon className="w-6 h-6 text-gray-500" />
-        </button>
-
         {/* Header with back button */}
         <div className="flex items-center mb-8">
           <button
             onClick={onBack}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors mr-4"
+            className="w-[45px] h-[45px] flex items-center justify-center rounded-full bg-gradient-to-br from-[#6366F1] to-[#111827] hover:from-[#5457DC] hover:to-[#1f2937] shadow-md hover:shadow-lg transition-all"
           >
-            <ArrowLeftIcon className="w-6 h-6 text-gray-500" />
+            <ArrowLeftIcon className="w-6 h-6 text-white" />
           </button>
-          <h2 className="text-2xl font-bold text-gray-900">Select Template</h2>
+          <h2 className="text-2xl font-bold text-gray-900 ml-4">Select Template</h2>
         </div>
+
+        {/* Close button */}
+        <button
+          onClick={onBack}
+          className="absolute top-8 right-8 p-2 hover:bg-gray-100 rounded-full transition-colors"
+        >
+          <XMarkIcon className="w-6 h-6 text-gray-500" />
+        </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Show skeleton loading for initial load */}

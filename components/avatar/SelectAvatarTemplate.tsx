@@ -18,6 +18,7 @@ import {
     ArrowBack as ArrowBackIcon
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const SelectAvatarTemplate = () => {
     const router = useRouter();
@@ -29,10 +30,11 @@ const SelectAvatarTemplate = () => {
     const options = [
         {
             title: 'Select Template',
-            icon: <TemplateIcon sx={{ fontSize: 32, color: '#fff' }}/>,
-            description: 'Choose from our pre-made avatar templates',
+            icon: <TemplateIcon sx={{ fontSize: 48, color: '#fff' }} />,
+            description: 'Choose from our pre-made AI Human templates',
             path: '/projects/create-avatar/avatar-template-library'
         },
+        /*
         {
             title: 'Upload Footage',
             icon: <UploadIcon sx={{ fontSize: 32, color: '#fff' }}/>,
@@ -47,116 +49,144 @@ const SelectAvatarTemplate = () => {
             path: '/projects/create-avatar/avatar-webcam',
             instructionLink: true
         }
+        */
     ];
 
     return (
-        <Box sx={{ 
-            p: 3, 
-            pt: 8,
-            maxWidth: 1200, 
-            mx: 'auto',
-            minHeight: '100vh',
-            bgcolor: 'white'
+        <Box sx={{
+            p: 3,
+            pt: 4,
+            height: '100vh',
+            bgcolor: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'relative',
         }}>
-            <Paper 
-                elevation={0} 
-                sx={{ 
-                    p: 4, 
-                    borderRadius: 2,
-                    bgcolor: 'white',
-                    mt: 4
-                }}
-            >
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-                    <IconButton 
-                        onClick={handleBack}
-                        sx={{ 
-                            mr: 2,
-                            color: '#1D2136',
+            <Box sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '100%',
+                height: '100%',
+                opacity: 0.7,
+                zIndex: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <Image
+                    src="/template-illustrator.svg"
+                    alt="Background Illustration"
+                    width={900}
+                    height={500}
+                    style={{
+                        objectFit: 'contain',
+                        width: '100%',
+                        maxWidth: '900px'
+                    }}
+                />
+            </Box>
+
+            <Box sx={{
+                position: 'relative',
+                zIndex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                pl: '25%'
+            }}>
+                <IconButton
+                    onClick={handleBack}
+                    sx={{
+                        position: 'absolute',
+                        left: '40px',
+                        background: 'linear-gradient(135deg, #6366F1 0%, #111827 100%)',
+                        color: 'white',
+                        width: '45px',
+                        height: '45px',
+                        '&:hover': {
+                            background: 'linear-gradient(135deg, #5457DC 0%, #1f2937 100%)',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                        },
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+                    }}
+                >
+                    <ArrowBackIcon />
+                </IconButton>
+
+                <Card
+                    sx={{
+                        width: '400px',
+                        mt: 4,
+                        ml: 2,
+                        transition: 'transform 0.2s',
+                        background: `
+                            linear-gradient(
+                                90deg,
+                                rgba(255, 255, 255, 0.2) 0%,
+                                rgba(255, 255, 255, 0.6) 20%,
+                                rgba(255, 255, 255, 0.6) 80%,
+                                rgba(255, 255, 255, 0.2) 100%
+                            )
+                        `,
+                        backdropFilter: 'blur(8px)',
+                        '&:hover': {
+                            transform: 'translateY(-4px)',
+                            boxShadow: '0 4px 20px 0 rgba(0,0,0,0.08)'
+                        }
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => router.push(options[0].path)}
+                        sx={{
+                            p: 3,
                             '&:hover': {
-                                backgroundColor: 'rgba(29, 33, 54, 0.04)'
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
                             }
                         }}
                     >
-                        <ArrowBackIcon />
-                    </IconButton>
-                    <Typography variant="h4" sx={{ color: '#1C2536' }}>
-                        Choose Creation Method
-                    </Typography>
-                </Box>
-
-                <Grid container spacing={3}>
-                    {options.map((option, index) => (
-                        <Grid item xs={12} md={4} key={index}>
-                            <Card 
-                                sx={{ 
-                                    height: '100%',
-                                    transition: 'transform 0.2s',
-                                    '&:hover': {
-                                        transform: 'translateY(-4px)',
-                                        boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)'
-                                    }
+                        <CardContent sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            background: `
+                                linear-gradient(
+                                    180deg,
+                                    rgba(255, 255, 255, 0) 0%,
+                                    rgba(255, 255, 255, 0.5) 30%,
+                                    rgba(255, 255, 255, 0.5) 70%,
+                                    rgba(255, 255, 255, 0) 100%
+                                )
+                            `,
+                            borderRadius: 2
+                        }}>
+                            <Box
+                                sx={{
+                                    mb: 2,
+                                    p: 2.5,
+                                    borderRadius: '50%',
+                                    backgroundColor: '#1D2136',
+                                    width: 80,
+                                    height: 80,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
                                 }}
                             >
-                                <CardActionArea 
-                                    onClick={() => router.push(option.path)}
-                                    sx={{ height: '100%', p: 2 }}
-                                >
-                                    <CardContent sx={{ 
-                                        display: 'flex', 
-                                        flexDirection: 'column', 
-                                        alignItems: 'center',
-                                        textAlign: 'center',
-                                        height: '100%'
-                                    }}>
-                                        <Box 
-                                            sx={{ 
-                                                mb: 2,
-                                                p: 2,
-                                                borderRadius: '50%',
-                                                backgroundColor: '#1D2136',
-                                                width: 60,
-                                                height: 60,
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center'
-                                            }}
-                                        >
-                                            {option.icon}
-                                        </Box>
-                                        <Typography variant="h6" component="div" sx={{ mb: 1 }}>
-                                            {option.title}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                            {option.description}
-                                        </Typography>
-                                        {option.instructionLink && (
-                                            <Typography 
-                                                component="span"
-                                                variant="body2" 
-                                                sx={{ 
-                                                    color: '#6366F1',
-                                                    mt: 2,
-                                                    cursor: 'pointer',
-                                                    '&:hover': {
-                                                        textDecoration: 'underline'
-                                                    }
-                                                }}
-                                                onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
-                                                    e.stopPropagation();
-                                                    router.push('/projects/create-avatar/avatar-instructions');
-                                                }}
-                                            >
-                                                View detailed instructions here
-                                            </Typography>
-                                        )}
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Paper>
+                                {options[0].icon}
+                            </Box>
+                            <Typography variant="h5" component="div" sx={{ mb: 2 }}>
+                                {options[0].title}
+                            </Typography>
+                            <Typography variant="body1" color="text.secondary">
+                                {options[0].description}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Box>
         </Box>
     );
 };

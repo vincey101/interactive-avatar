@@ -416,10 +416,10 @@ export default function InteractiveAvatar() {
             <div className="h-full justify-center items-center flex flex-col gap-2 w-[500px] self-center relative">
               <Button
                 isIconOnly
-                className="absolute -left-40 top-0 bg-transparent"
+                className="absolute -left-40 -top-2 bg-gradient-to-br from-[#6366F1] to-[#111827] hover:from-[#5457DC] hover:to-[#1f2937] w-[45px] h-[45px] shadow-md hover:shadow-lg"
                 onClick={() => router.back()}
               >
-                <ArrowLeft className="text-gray-600" size={24} />
+                <ArrowLeft className="text-white" size={24} />
               </Button>
               <div className="flex flex-col gap-1 w-full px-2">
                 {!selectedKnowledgeType && (
