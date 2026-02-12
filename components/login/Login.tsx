@@ -27,7 +27,7 @@ export default function Login() {
         setIsLoading(true);
 
         try {
-            const response = await fetch('https://api.humanaiapp.com/api/login', {
+            const response = await fetch('https://api.mysuperaiapp.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
